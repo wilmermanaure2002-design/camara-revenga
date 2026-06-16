@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="google-site-verification=eY3gH3UoMQTmjbTzqWWDEn3ExVmDNLxiwWTF5MFlSmM">
+    <title>Cámara Municipal José Rafael Revenga | Gobierno Municipal</title>
+    <meta name="description" content="Cámara Municipal José Rafael Revenga. Ordenanzas, concejales, historia y atención al ciudadano. Sitio oficial de El Consejo, Aragua.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary: #1e4a6b;
+            --primary-dark: #0e2f45;
+            --secondary: #d4a373;
+            --secondary-dark: #b87c4f;
+            --light-bg: #f9fbfd;
+            --gray-light: #eef2f5;
+            --text-dark: #1f2a3e;
+            --white: #ffffff;
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 32px rgba(0,0,0,0.12);
+            --transition: all 0.3s ease;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        /* Top bar */
+        .top-bar {
+            background: var(--primary-dark);
+            color: var(--white);
+            font-size: 0.8rem;
+            padding: 10px 0;
+        }
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 16px;
+        }
+        .top-bar a:hover { color: var(--secondary); }
+        /* Header */
+        .main-header {
+            background: var(--white);
+            box-shadow: var(--shadow-md);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo i { font-size: 2rem; color: var(--primary); }
+        .logo-text h1 { font-size: 1.2rem; color: var(--primary); }
+        .logo-text p { font-size: 0.6rem; color: #5a6e7c; }
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+        .nav-menu a:hover, .nav-menu a.active { color: var(--secondary); }
+        .menu-toggle {
+            display: none;
+            font-size: 1.6rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, rgba(30,74,107,0.92), rgba(14,47,69,0.96)), url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1920&h=650&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+        .hero p { font-size: 1.1rem; max-width: 750px; margin: 0 auto; }
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+        .stat-number { font-size: 1.8rem; font-weight: 800; color: var(--secondary); }
+        /* Sections */
+        .section { padding: 70px 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .section-alt { background-color: var(--gray-light); }
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        /* Historia */
+        .historia-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .historia-texto p { margin-bottom: 1rem; text-align: justify; }
+        .historia-imagen {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        .historia-imagen img { width: 100%; display: block; }
+        /* Misión, Visión, Valores, Objetivos */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .mv-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.8rem;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid var(--secondary);
+        }
+        .mv-card:hover { transform: translateY(-6px); }
+        .mv-card i { font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem; }
+        .mv-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--primary); }
+        .mv-card p { text-align: justify; line-height: 1.5; }
+        .valores-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+        .valores-list li {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .valores-list i { font-size: 1rem; width: 24px; color: var(--secondary); margin: 0; }
+        /* Ordenanzas */
+        .ordenanzas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+        .ordenanza-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 1.6rem;
+            box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--secondary);
+            transition: var(--transition);
+        }
+        .ordenanza-card:hover { transform: translateY(-5px); }
+        .ordenanza-card i { font-size: 1.8rem; color: var(--secondary); margin-bottom: 1rem; }
+        .ordenanza-card h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+        .ordenanza-fecha { font-size: 0.75rem; color: var(--secondary-dark); margin-top: 0.8rem; }
+        /* Personal */
+        .personal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        .personal-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        .personal-card:hover { transform: translateY(-6px); }
+        .personal-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .personal-info { padding: 1.2rem; }
+        .personal-info h3 { font-size: 1.2rem; color: var(--primary); }
+        .personal-cargo { color: var(--secondary); font-weight: 600; margin: 0.25rem 0; }
+        .personal-depto { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+        /* Contacto */
+        .contacto-simple {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+        .contacto-simple p { margin-bottom: 0.8rem; }
+        .contacto-simple i { width: 30px; color: var(--secondary); margin-right: 8px; }
+        /* Footer */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.8rem;
+        }
+        .footer a { color: white; margin: 0 6px; text-decoration: none; }
+        .footer a:hover { color: var(--secondary); }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle { display: block; }
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 80%;
+                height: calc(100vh - 70px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem;
+                transition: 0.3s;
+                z-index: 999;
+                gap: 1.5rem;
+                box-shadow: var(--shadow-lg);
+            }
+            .nav-menu.active { left: 0; }
+            .historia-grid { grid-template-columns: 1fr; }
+            .hero h2 { font-size: 1.8rem; }
+            .section-title { font-size: 1.6rem; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-number { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="top-bar">
+    <div class="container">
+
+        <span><i class="fas fa-envelope"></i> Concejomunicipalrevenga1@gmail.com
+            <a href="https://www.facebook.com/profile.php?id=61576169452380"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.tiktok.com/@cmr.aragua_nos_un?_r=1&_t=ZN-974KoGyaCBS"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/cmr.aragua_nos_une?igsh=dzBoZ3c2cGt5Nmty"><i class="fab fa-instagram"></i></a>
+        </span>
+    </div>
+</div>
+
+<header class="main-header">
+    <div class="header-flex">
+        <div class="logo">
+            <i class="fas fa-landmark"></i>
+            <div class="logo-text">
+                <h1>Cámara Municipal José Rafael Revenga</h1>
+                <p>Gobierno Municipal 2026-2029</p>
+            </div>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#mision-vision">Misión y Visión</a></li>
+            <li><a href="#ordenanzas">Ordenanzas</a></li>
+            <li><a href="#personal">Personal</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </div>
+</header>
+
+<main>
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Sirviendo con transparencia y arraigo</h2>
+            <p>Comprometidos con el desarrollo sostenible, la participación ciudadana y el respeto a nuestras tradiciones. Conoce nuestra historia, marco legal, equipo de trabajo y principios institucionales.</p>
+            <div class="hero-stats">
+                <div class="stat"><span class="stat-number">+65,000</span><div>Habitantes</div></div>
+                <div class="stat"><span class="stat-number">14</span><div>Ordenanzas vigentes</div></div>
+                <div class="stat"><span class="stat-number">150+</span><div>Servidores públicos</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historia" class="section">
+        <div class="container">
+            <h2 class="section-title">Reseña Histórica</h2>
+            <div class="historia-grid">
+                <div class="historia-texto">
+                    <p>La Cámara Municipal del Municipio José Rafael Revenga es el órgano legislativo autónomo de esta jurisdicción del Estado Aragua. Su historia formal está intrínsecamente ligada a la larga lucha de los habitantes de El Consejo por lograr su independencia político-territorial frente al Distrito Santiago Mariño, consumada en 1993.</p>
+                    <p>Durante décadas, El Consejo fue un municipio foráneo dependiendo administrativa y legalmente del Distrito Santiago Mariño (cuya capital es Turmero). La consolidación de la autonomía se logró tras una intensa organización popular y recolección de firmas impulsada por la Junta Pro-Autonomía.</p>
+                    <p>El municipio José Rafael Revenga fue finalmente decretado como Municipio Autónomo el 24 de enero de 1993 por la Asamblea Legislativa del Estado Aragua. Con este paso, se instaló por primera vez el Concejo Municipal (Cámara Municipal) propio, encargado de legislar y administrar los intereses de la localidad. El municipio rinde homenaje a José Rafael Revenga, ilustre abogado, diplomático, periodista y secretario personal del Libertador Simón Bolívar, quien nació en El Consejo el 24 de noviembre de 1786.</p>
+                </div>
+                <div class="historia-imagen">
+                    <img src="img/camara.webp" alt="img/camara.webp" onerror="this.src='https://placehold.co/700x450/1e4a6b/white?text=San+Esteban'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISIÓN, VISIÓN, VALORES Y OBJETIVOS -->
+    <section id="mision-vision" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Principios Institucionales</h2>
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Misión</h3>
+                    <p>Debatir, sancionar y dictar los instrumentos legislativos necesarios para garantizar en forma eficiente, suficiente y oportuna la participación ciudadana en el proceso de formación, ejecución, control y evaluación de la gestión pública municipal.</p>
+                </div>
+                <div class="mv-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Visión</h3>
+                    <p>Ser el organismo municipal por excelencia que mejor contribuya a elevar la calidad de vida de la población, creando los instrumentos jurídicos municipales indispensables que promuevan una exitosa gestión de gobierno local enmarcada en los lineamientos, coadyuvando así a brindar la mayor suma de felicidad posible al municipio José Rafael Revenga.</p>
+                </div>
+                <div class="mv-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Valores</h3>
+                    <ul class="valores-list">
+                        <li><i class="fas fa-check-circle"></i> Respeto</li>
+                        <li><i class="fas fa-check-circle"></i> Lealtad</li>
+                        <li><i class="fas fa-check-circle"></i> Compromiso social</li>
+                        <li><i class="fas fa-check-circle"></i> Honestidad</li>
+                        <li><i class="fas fa-check-circle"></i> Humildad</li>
+                        <li><i class="fas fa-check-circle"></i> Responsabilidad</li>
+            </ul>
+                </div>
+                <div class="mv-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Objetivos Estratégicos</h3>
+                    <ul class="valores-list">
+                        <li><i class="fas fa-arrow-right"></i> Desarrollar un modelo de gestión pública municipal orientado a promover la coherencia entre la inversión pública con las necesidades y demandas sociales, teniendo como instrumento orientador los planes de desarrollo municipales y los planes de desarrollo municipales y los planes operativos anuales.</li>
+                        <li><i class="fas fa-arrow-right"></i> Convocar coordinar y dirigir las sesiones ordinarias, extraordinarias y especiales en el seno de la cámara de municipal.</li>
+                        <li><i class="fas fa-arrow-right"></i> Propiciar el ordenamiento territorial acorde con los proyectos de desarrollo municipal, previamente analizados, discutidos y aprobados con el Concejo Local de Planificación Publica.</li>
+                        <li><i class="fas fa-arrow-right"></i> Ejercer eficientemente la supervisión y control.</li>
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ordenanzas" class="section">
+        <div class="container">
+            <h2 class="section-title">Ordenanzas Municipales</h2>
+            <p class="section-sub">Marco legal que regula la vida institucional, los servicios públicos y la protección de derechos en nuestro municipio.</p>
+            <div id="ordenanzasContainer" class="ordenanzas-grid"></div>
+            <p style="margin-top: 2rem; font-size: 0.85rem; text-align: center;"><i class="fas fa-archive"></i> Para consultar el texto completo, diríjase a la Secretaría Municipal o al portal de transparencia.</p>
+        </div>
+    </section>
+
+    <section id="personal" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Directorio de Personal</h2>
+            <p class="section-sub">Conozca a las autoridades y al equipo administrativo que trabaja diariamente por el desarrollo de La Cámara Municipal del Municipio José Rafael Revenga.</p>
+            <div id="personalContainer" class="personal-grid"></div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2 class="section-title">Atención al Ciudadano</h2>
+            <div class="contacto-simple">
+                <p><i class="fas fa-map-marker-alt"></i>Calle Bolívar, N° 54, Palacio Municipal, El Consejo, estado Aragua.</p>
+                
+                <p><i class="fas fa-envelope"></i>Concejomunicipalrevenga1@gmail.com</p>
+                <p><i class="fas fa-clock"></i> Horario: Lunes a Viernes de 8:00 a.m. a 3:30 p.m. (atención continua)</p>
+                
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p><a href="#inicio">Inicio</a> | <a href="#historia">Historia</a> | <a href="#mision-vision">Misión y Visión</a> | <a href="#ordenanzas">Ordenanzas</a> | <a href="#personal">Personal</a> | <a href="#contacto">Contacto</a></p>
+        <p>&copy; 2026 Cámara Municipal del Municipio José Rafael Revenga. Todos los derechos reservados. Sitio oficial con datos verificados.</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">Transparencia y rendición de cuentas | Portal accesible creado por Wilmer Manaure</p>
+    </div>
+</footer>
+
+<script>
+    // Datos de ordenanzas (ejemplo)
+    const ordenanzasData = [
+        { titulo: "Ordenanza Sobre Creación De La Orden Comandante Eterno Hugo Chavez Frias.", descripcion: "destinada a enaltecer a las ciudadanas, los ciudadanos, organizaciones Educativas, Universitarias, sociales, religiosas, deportivas que se hagan merecedoras por su actuación y compromiso manifiesto en vivir los valores éticos y morales.", fecha: "Gaceta N° 200, 30/09/2023" },
+        { titulo: "Ordenanza Sobre La Creacion Orden Apostol Pablo En Su Unica Clase Del Municipio Jose Rafael Revenga 199-2023", descripcion: "Esta ordenanza crea la condecoración Orden Apóstol Pablo en su Única Clase para reconocer a ciudadanos, pastores y organizaciones sociales o religiosas con un firme compromiso con los valores.", fecha: "Gaceta N° 199, 26/09/2023" },
+        { titulo: "Ordenanza Sobre La Creacion Orden Nuestra Señora Del Buen Consejo", descripcion: "Esta Ordenanza tiene por objeto crear la Condecoración ORDEN NUESTRA SEÑORA DEL BUEN CONSEJO en su única clase, destinada a enaltecer a las ciudadanas, los ciudadanos, organizaciones sociales, religiosas, deportivas que se hagan merecedoras por su actuación y compromiso manifiesto en vivir los valores cristianos..", fecha: "Gaceta N° 038, 31/08/2023" },
+        { titulo: "Reforma Parcial Ordenanza De Organización Y Funcionamiento Del Concejo Municipal Del Municipio José Rafael Revenga Y Sus Dependencias Auxiliares", descripcion: "Esta ordenanza regula la organización, funcionamiento y control del Poder Público Municipal en el Municipio José Rafael Revenga, garantizando la participación ciudadana de acuerdo con la ley y la Constitución.", fecha: "Gaceta N° 195, 23/05/2023" },
+        { titulo: "Ordenanza Especial Para Las Trabajadoras Y Trabajadores Con Diversidad Funcional Por Discapacidad", descripcion: "Esta ordenanza tiene como fin proteger y garantizar los derechos laborales de las personas con diversidad funcional por discapacidad. Busca asegurar la igualdad de oportunidades, su desarrollo integral, autonomía, inclusión e integración al trabajo según sus capacidades.", fecha: "Gaceta N° 194, 12/04/2023" },
+        { titulo: "Ordenanza Para Las Personas Con Discapacidad Del Municipio Jose Rafael Revenga", descripcion: "Esta ordenanza es de orden público y busca reconocer la dignidad de las personas con discapacidad como sujetos de pleno derecho. Su objetivo es regular los mecanismos que garanticen su desarrollo integral, igualdad de condiciones, disfrute autónomo de sus derechos y su inclusión en la vida familiar y comunitaria, contando con el apoyo solidario de su familia, la sociedad y la atención del Municipio.", fecha: "Gaceta N° 193, 12/04/2023" },
+        { titulo: "Ordenanza De Patrimonio Natural Río Tuy, Montaña De Guareima, Pozos De El Café, Pozos Azules, Morros De El Consejo, Ave Endémica (Guacharaca) Y Planta Endémica (Cocuiza), El Cerro La Cruz Del Municipio José Rafael Revenga Del Estado Bolivariano De Aragua.", descripcion: "La presente ordenanza tiene por objeto declarar como patrimonio natural del municipio José Rafael Revenga, estado Aragua, al Río Tuy, la Montaña de Guareima con su biodiversidad y afluentes, los Pozos de El Café, los Pozos Azules, el Morro de El Consejo, el ave endémica Guacharaca y la planta endémica Cocuiza, y el Cerro La Cruz, así como establecer las medidas para su protección, conservación, regulación, uso y aprovechamiento de los recursos naturales del Municipio para proteger el medio ambiente y promover el uso sostenible.", fecha: "Gaceta N° 220, 07/05/2025" },
+        { titulo: "Ordenanza De Actividades Culturales, Religiosas Efemerides Y Patrimonio Historico Cultural Del Municipio Jose Rael Revenga Del Estado Bolivariano De Aragua.", descripcion: " Esta ordenanza se basa en principios de integridad e interculturalidad. Su objeto es difundir el calendario de actividades culturales, religiosas y efemérides municipales, así como regular el rescate, protección, restauración y conservación del Patrimonio Histórico-Cultural. Se enfoca especialmente en el Casco Tradicional del pueblo para mantener su carácter arquitectónico, residencial, comercial y turístico, bajo el marco legal municipal y nacional vigente.", fecha: "Gaceta N° 221, 07/05/2025" },
+    ];
+
+    const personalData = [
+        { nombre: "LIC. José Gregorio", cargo: "Director de Planificación", departamento: "Planificación de presupuesto", foto: "img/jose gregorio.jpeg", descripcion: "Manejo y control de planificacion y presupuesto." },
+        { nombre: "ING. Elis Alvarado", cargo: "Coordinador de soporte técnico", departamento: "Informatica", foto: "img/elis alvarado.jpeg", descripcion: "Encargado de Mantenimiento y Gestion de los Equipos tecnologicos." },
+        { nombre: "LIC. Menabil Visbal", cargo: "Coordinadora de Bienes", departamento: "Direccion de Administración", foto: "img/menabil visbal.jpeg", descripcion: "Encargada de la Administracion y Resguardo." },
+        { nombre: "LIC. Indra Runque", cargo: "Coordinadora de Contabilidad", departamento: "Administración", foto: "img/indra runque.jpeg", descripcion: "Encargada de la COntabilidad y Declaracion de IVA e Impuestos" },
+        { nombre: "LIC. Magaly Bogado", cargo: "Directora de Administración", departamento: "Dirección de Administración", foto: "img/magaly bogado.jpeg", descripcion: "Encargada de los Analisi de Informe y Manejo de las Diferentes Cuentas Bancarias de la Institucion." },
+        { nombre: "LIC. Daris Contreras", cargo: "Coordinadora de Tesoreria", departamento: "Administracion", foto: "img/daris contreras.jpeg", descripcion: "Encargada de Tramitar Ordenes de Pago y Realización de Requisiciones." },
+        { nombre: "LIC. Carmen López De Infante", cargo: "Secretaria Municipal", departamento: "Secretaría Municipal", foto: "img/carmen lópez de infante.jpeg", descripcion: "Encargada del Control de Documentos Legislativos." },
+        { nombre: "LIC. Nancy Chacón", cargo: "Sub-Secretaria", departamento: "Secretaría", foto: "img/nancy chacon.jpeg", descripcion: "Encargada de Elaboración de Libros de Actas." },
+        { nombre: "LIC. José Luis Rodriguez", cargo: "Jefe de Servicios Generales", departamento: "Gestión", foto: "img/jose luis rodriguez.jpeg", descripcion: "Encargado de Mantener la Estructura en Perfecto Estado y Funcionamiento." },
+        { nombre: "LIC. Daiglys Palma", cargo: "Directora de OAC Atencion al Ciudadano", departamento: "Talento Humano", foto: "img/daiglys palma.jpeg", descripcion: "Encargada de las Ayudas medicas y Beneficios del Trabajador." },
+        { nombre: "LIC. Juleydys Rodrígues", cargo: "Coordinadora de Nomina", departamento: "Talento Humano", foto: "img/juleydys rodriguez.jpeg", descripcion: "Encargada de las Bonificaciones del Personal." },
+        { nombre: "LIC. Jorgelis Melendez", cargo: "Coordinadora de Binestar Social", departamento: "Talento Humano", foto: "img/jorgelis melendez.jpeg", descripcion: "Vela por el cumpliento de las Normativas del Bienestar Personal." },
+        { nombre: "LIC. Josver Bracho", cargo: "Asistente de AOC", departamento: "Atencion al Ciudadano", foto: "img/josver bracho.jpeg", descripcion: "Asiste en las Actividade de Talaneto Humano." },
+        { nombre: "LIC. Yoni Alarcon", cargo: "Presidente Municipal", departamento: "Presidencia", foto: "img/yoni alarcon.jpeg", descripcion: "Dirige el Poder Legislativo Local." },
+    ];
+
+    function renderOrdenanzas() {
+        const container = document.getElementById('ordenanzasContainer');
+        if (container) {
+            container.innerHTML = ordenanzasData.map(o => `
+                <div class="ordenanza-card">
+                    <i class="fas fa-gavel"></i>
+                    <h3>${o.titulo}</h3>
+                    <p>${o.descripcion}</p>
+                    <div class="ordenanza-fecha">${o.fecha}</div>
+                </div>
+            `).join('');
+        }
+    }
+
+    function renderPersonal() {
+        const container = document.getElementById('personalContainer');
+        if (container) {
+            container.innerHTML = personalData.map(p => `
+                <div class="personal-card">
+                    <img class="personal-img" src="${p.foto}" alt="${p.nombre}" onerror="this.src='https://placehold.co/400x260/1e4a6b/white?text=${p.nombre.charAt(0)}'">
+                    <div class="personal-info">
+                        <h3>${p.nombre}</h3>
+                        <div class="personal-cargo">${p.cargo}</div>
+                        <div class="personal-depto">${p.departamento}</div>
+                        <p>${p.descripcion}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
+    // Menú móvil
+    function initMobileMenu() {
+        const toggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (toggle && navMenu) {
+            toggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.addEventListener('click', () => navMenu.classList.remove('active'));
+            });
+        }
+    }
+
+    // Scroll suave
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === "#" || targetId === "") return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    }
+
+    // Resaltar sección activa en el menú
+    function highlightActiveSection() {
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        renderOrdenanzas();
+        renderPersonal();
+        initMobileMenu();
+        initSmoothScroll();
+        highlightActiveSection();
+    });
+</script>
+</body>
+</html>
